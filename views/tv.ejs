@@ -879,7 +879,7 @@
       dataPriceLow.innerText = lowprice;
 
       //fixed-price high
-      let priceHigh = parseFloat(data.XAUUSD.ask - data.COMMONBUY).toFixed(2); // Get the price with 2 decimal places
+      let priceHigh = parseFloat(data.XAUUSD.ask + data.COMMONBUY).toFixed(2); // Get the price with 2 decimal places
       priceHigh = parseFloat(priceHigh).toLocaleString();
       if (!lastPriceHigh || lastPriceHigh === priceHigh) {
         stockPriceHigh.style.color = 'white';
@@ -912,15 +912,15 @@
       let silverPriceData = parseFloat(data.XAGUSD.ask);
 
       // Conversion rates
-      const usdPrice = 3.6725;
-      const aedPrice = 0.03215074;
+      const usdPrice = 0.03215074;
+      const OmrPrice = 0.38501;
 
       // Calculate the goldData1 value
-      const goldData1 = parseFloat(goldPriceData) * (usdPrice * aedPrice * 995) + (parseFloat(data.COMMONBUY) + parseFloat(data.GOLD995));
-      const goldData2 = parseFloat(goldPriceData) * (usdPrice * aedPrice * 999.9) + (parseFloat(data.COMMONBUY) + parseFloat(data.GOLD9999));
-      const goldData3 = parseFloat(goldPriceData) * (usdPrice * aedPrice * 116.664) + (parseFloat(data.COMMONBUY) + parseFloat(data.GOLD));
-      const goldData4 = parseFloat(goldPriceData) * (usdPrice * aedPrice) + (parseFloat(data.COMMONBUY) + parseFloat(data.GOLD9999GM));
-      const silverData = parseFloat(silverPriceData) * (usdPrice * aedPrice * 1000) + (parseFloat(data.COMMONBUY) + parseFloat(data.SILVER));
+      const goldData1 = parseFloat(goldPriceData) * (usdPrice * OmrPrice * 995) + (parseFloat(data.COMMONBUY) + parseFloat(data.GOLD995));
+      const goldData2 = parseFloat(goldPriceData) * (usdPrice * OmrPrice * 999.9) + (parseFloat(data.COMMONBUY) + parseFloat(data.GOLD9999));
+      const goldData3 = parseFloat(goldPriceData) * (usdPrice * OmrPrice * 116.664) + (parseFloat(data.COMMONBUY) + parseFloat(data.GOLD));
+      const goldData4 = parseFloat(goldPriceData) * (usdPrice * OmrPrice) + (parseFloat(data.COMMONBUY) + parseFloat(data.GOLD9999GM));
+      const silverData = parseFloat(silverPriceData) * (usdPrice * OmrPrice * 1000) + (parseFloat(data.COMMONBUY) + parseFloat(data.SILVER));
 
       // Display the calculated values in the HTML element
       const gold995Element = document.getElementById('gold995');
