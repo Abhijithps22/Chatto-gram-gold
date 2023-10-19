@@ -8,13 +8,19 @@ const indexRouter = require("./routes/index");
 const tvRouter = require("./routes/tv");
 const cors = require("cors");
 
-//cors policy
+// Define an array of allowed origins
+const allowedOrigins = [
+  "http://localhost:3000",
+  "http://gold-price-api-chattogram-gold.ap-south-1.elasticbeanstalk.com?franchiseId=646c8c2d66d5379aede9313f",
+];
+
+// Set up CORS policy with the array of allowed origins
 app.use(
   cors({
-    origin:
-      "http://gold-price-api-chattogram-gold.ap-south-1.elasticbeanstalk.com?franchiseId=646c8c2d66d5379aede9313f",
+    origin: allowedOrigins,
   })
 );
+
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
