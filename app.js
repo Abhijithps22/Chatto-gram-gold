@@ -1,17 +1,18 @@
-var express = require("express");
-var createError = require("http-errors");
-var path = require("path");
-var cookieParser = require("cookie-parser");
-var logger = require("morgan");
-var app = express();
-var indexRouter = require("./routes/index");
-var tvRouter = require("./routes/tv");
+const express = require("express");
+const createError = require("http-errors");
+const path = require("path");
+const cookieParser = require("cookie-parser");
+const logger = require("morgan");
+const app = express();
+const indexRouter = require("./routes/index");
+const tvRouter = require("./routes/tv");
+const cors = require("cors");
 
 //cors policy
 app.use(
   cors({
     origin:
-      "https://gold-price-api-chattogram-gold.ap-south-1.elasticbeanstalk.com?franchiseId=646c8c2d66d5379aede9313f",
+      "http://gold-price-api-chattogram-gold.ap-south-1.elasticbeanstalk.com?franchiseId=646c8c2d66d5379aede9313f",
   })
 );
 
