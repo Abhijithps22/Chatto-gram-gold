@@ -4,9 +4,16 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 var app = express();
-
 var indexRouter = require("./routes/index");
 var tvRouter = require("./routes/tv");
+
+//cors policy
+app.use(
+  cors({
+    origin:
+      "https://gold-price-api-chattogram-gold.ap-south-1.elasticbeanstalk.com?franchiseId=646c8c2d66d5379aede9313f",
+  })
+);
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
@@ -16,7 +23,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
-
 app.use("/", indexRouter);
 app.use("/tv", tvRouter);
 
@@ -38,5 +44,4 @@ app.use(function (err, req, res, next) {
 
 const PORT = 3000;
 app.listen(PORT, () => console.log(`running port ${PORT}`));
-
 module.exports = app;
