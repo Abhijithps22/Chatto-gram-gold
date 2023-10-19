@@ -15,7 +15,6 @@ app.use(
       "http://gold-price-api-chattogram-gold.ap-south-1.elasticbeanstalk.com?franchiseId=646c8c2d66d5379aede9313f",
   })
 );
-
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
