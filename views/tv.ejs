@@ -842,8 +842,10 @@
     const socketUrl = "http://gold-price-api-chattogram-gold.ap-south-1.elasticbeanstalk.com?franchiseId=646c8c2d66d5379aede9313f";
     const socket = io(socketUrl, {
       transports: ["websocket"],
-      withCredentials: true
+      withCredentials: true,
+      secure: true, // Set secure to true to use wss
     });
+
     //for using  if-else
     let stockPriceHigh = document.getElementById('data-container1');
     let lastPriceHigh = null;
@@ -963,35 +965,10 @@
       console.log("Disconnected from the server");
     });
   </script>
-  <script type="text/javascript">
-    const COUNTRY_URL = "../ajax/get/countrie.html",
-      STATE_URL = "../ajax/get/states.html",
-      CITY_URL = "../ajax/get/cities.html";
-    var is_country = false,
-      countires_id = "",
-      states_id = "",
-      cities_id = "";
-  </script>
-  <script src="../js/vendor.js"></script>
-  <script src="../js/bootstrap-select.js"></script>
-  <script src="../js/jquery-ui.min.js"></script>
-  <script src="../js/jquery.selectBoxIt.min.js"></script>
-  <script src="../js/custom.js"></script>
-  <script src="../js/global.js"></script>
-  <script src="../js/select2.full.js"></script>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-207044394-1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
 
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-    gtag("js", new Date());
 
-    gtag("config", "UA-207044394-1");
-  </script>
-  <script src="../js/authentication.js"></script>
-  <script src="../js/theme.js"></script>
+
+
 </body>
 
 </html>
