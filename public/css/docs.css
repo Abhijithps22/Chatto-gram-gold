@@ -4924,6 +4924,9 @@ footer.inner-footer.footer::before {
   color: #000;
   margin-top: -35px;
 }
+.warning-icon {
+  color: red;
+}
 
 /* Styles for smaller screens */
 @media (max-width: 567px) {
