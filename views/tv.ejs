@@ -839,12 +839,11 @@
     <!-- ========== End table ========== -->
   </div>
   <script>
-    const socketUrl = "http://gold-price-api-chattogram-gold.ap-south-1.elasticbeanstalk.com?franchiseId=646c8c2d66d5379aede9313f";
+    const socketUrl = "wss://chattogram.myacegold.com?franchiseId=646c8c2d66d5379aede9313f";
     const socket = io(socketUrl, {
       transports: ["websocket"],
-      withCredentials: true,
-      secure: true, // Set secure to true to use wss
-    });
+      withCredentials: true
+    })
 
     //for using  if-else
     let stockPriceHigh = document.getElementById('data-container1');
@@ -860,6 +859,8 @@
     // Listen for "message" event from the server
     socket.on("message", (data) => {
       console.log(data);
+      let commnBuy = parseFloat(data.COMMONBUY);
+      let commonSell = parseFloat(data.COMMONSELL)
       let market = document.getElementById('market_data_items')
       market.style.display = 'none';
 
@@ -882,7 +883,7 @@
 
 
       // fixed-price low
-      let priceLow = parseFloat(data.XAUUSD.bid - data.COMMONSELL).toFixed(2);
+      let priceLow = parseFloat(data.XAUUSD.bid - commonSell).toFixed(2);
       priceLow = parseFloat(priceLow).toLocaleString();
       if (!lastPriceLow || lastPriceLow === priceLow) {
         stockPriceLow.style.color = 'white';
@@ -895,7 +896,7 @@
       lastPriceLow = priceLow;
 
       //fixed-price high
-      let priceHigh = parseFloat(data.XAUUSD.ask + 0.60).toFixed(2); // Get the price with 2 decimal places
+      let priceHigh = parseFloat(data.XAUUSD.ask + commnBuy).toFixed(2); // Get the price with 2 decimal places
       priceHigh = parseFloat(priceHigh).toLocaleString();
       if (!lastPriceHigh || lastPriceHigh === priceHigh) {
         stockPriceHigh.style.color = 'white';
