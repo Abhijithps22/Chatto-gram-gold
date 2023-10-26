@@ -5,13 +5,12 @@ const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const app = express();
 const indexRouter = require("./routes/index");
-const tvRouter = require("./routes/tv");
 const cors = require("cors");
 
 // Define an array of allowed origins
 const allowedOrigins = [
   "http://localhost:3000",
-  "http://gold-price-api-chattogram-gold.ap-south-1.elasticbeanstalk.com?franchiseId=646c8c2d66d5379aede9313f",
+  "wss://chattogram.myacegold.com?franchiseId=646c8c2d66d5379aede9313f",
 ];
 
 // Set up CORS policy with the array of allowed origins
@@ -30,7 +29,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 app.use("/", indexRouter);
-app.use("/tv", tvRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
